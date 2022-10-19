@@ -1,0 +1,22 @@
+{
+  "name": "Neo4j-Sink",
+  "config": {
+        "topics": "ddi.public.account",
+        "connector.class": "streams.kafka.connect.sink.Neo4jSinkConnector",
+        "kafka.key.deserializer":"org.apache.kafka.common.serialization.ByteArrayDeserializer",
+        "kafka.value.deserializer":"org.apache.kafka.common.serialization.ByteArrayDeserializer",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable":"false",
+        "errors.retry.timeout": "-1",
+        "errors.retry.delay.max.ms": "1000",
+        "errors.tolerance": "all",
+        "errors.log.enable": true,
+        "errors.log.include.messages": true,
+        "neo4j.server.uri": "neo4j://192.168.18.231:7687",
+        "neo4j.authentication.basic.username": "neo4j",
+        "neo4j.authentication.basic.password": "ddi123",
+        "neo4j.encryption.enabled": false,
+        "neo4j.topic.cypher.ddi.public.account": "MERGE (u:Account {id: event.after.account_no}) ON CREATE SET u.cif=event.after.cif, u.open_date=event.after.open_date"
+  }
+}
