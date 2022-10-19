@@ -1,0 +1,19 @@
+ {
+    "name": "postgresql",
+    "config": {
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+        "tasks.max": "1",
+        "plugin.name": "pgoutput",
+        "database.hostname": "192.168.18.193",
+        "database.port": "5432",
+        "database.user": "postgres",
+        "database.password": "ddi123",
+        "database.dbname": "postgres",
+        "database.server.name": "ddi",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter.schemas.enable": "false",
+        "value.converter.schemas.enable": "false",
+        "snapshot.mode": "always"
+    }
+}
